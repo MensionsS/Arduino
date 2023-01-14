@@ -11,8 +11,7 @@ const int pinButton = 2;
 
 
 
-void setup()
-{
+void setup()    {
     lcd.begin(5, 3);
     lcd.setRGB(colorR, colorG, colorB);
     Serial.begin(9600);                         
@@ -20,40 +19,35 @@ void setup()
     pinMode(pinButton, INPUT);
 }
 
-void loop()
-{
-    int vitesse = analogRead(potentiometer);
-    float dvitesse = analogRead(potentiometer);
+void loop()   {
+int vitesse = analogRead(potentiometer);
+float dvitesse = analogRead(potentiometer);
 
     
-    dvitesse = dvitesse/10;
-    vitesse = vitesse/3;
+dvitesse = dvitesse/10;
+vitesse = vitesse/3;
 
-
-    if(digitalRead(pinButton))
-    {
+if(digitalRead(pinButton))  {
     lcd.setCursor(0, 0);
     lcd.print(vitesse);
     lcd.print("km/h");
-            if (vitesse > 50) {
-              lcd.setCursor(0, 1);
-             lcd.print("Trop Rapide");
-          } else {
-             lcd.setCursor(0, 1);
-          }
-    }
-    else
-    {
+      if (vitesse > 50) {
+          lcd.setCursor(0, 1);
+          lcd.print("Trop Rapide");
+      } else{
+          lcd.setCursor(0, 1);
+      }
+    } else{
     lcd.setCursor(0, 0);
     lcd.print(dvitesse);
     lcd.print("km/h");
-            if (dvitesse > 50) {
-              lcd.setCursor(0, 1);
-              lcd.print("Trop Rapide");
-          } else {
-           lcd.setCursor(0, 1);
-          }
+        if (dvitesse > 50) {
+          lcd.setCursor(0, 1);
+          lcd.print("Trop Rapide");
+        } else{
+          lcd.setCursor(0, 1);
+        }
    }
-     delay(700);
-     lcd.clear();  
+delay(700);
+lcd.clear();  
 }
